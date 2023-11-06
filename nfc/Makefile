@@ -1,15 +1,10 @@
-obj-m := nxpnfc_i2c.o
-DESTDIR ?= $(INSTALL_MOD_PATH)
+KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
 
-modules all:
-	$(MAKE) -C $(KERNEL_SRC) M=$(CURDIR) modules
+all:
+	$(MAKE) -C $(KERNEL_SRC) M=$(shell pwd) modules $(KBUILD_OPTIONS)
 
-modules_install install: all
-	$(MAKE) -C $(KERNEL_SRC) M=$(CURDIR) modules_install \
-		INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_DIR="kernel/drivers/misc"
+modules_install:
+	$(MAKE) INSTALL_MOD_STRIP=1 -C $(KERNEL_SRC) M=$(shell pwd) modules_install
 
 clean:
-	$(MAKE) -C $(KERNEL_SRC) M=$(CURDIR) clean
-
-.PHONY: all install clean
-.EXPORT_ALL_VARIABLES:
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) clean
