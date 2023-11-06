@@ -10,17 +10,7 @@ config NXP_NFC_I2C
 	  This is for I2C connected version. NCI protocol logic
 	  resides in the usermode and it has no other NFC dependencies.
 
-	  If unsure, say N.
-
-config NXP_NFC_SPI
-	tristate "NFC SPI Slave driver for NXP-NFCC"
-	depends on SPI
-	help
-	  This enables the NFC driver for PN71xx based devices.
-	  This is for SPI connected version. NCI protocol logic
-	  resides in the usermode and it has no other NFC dependencies.
-
-	  If unsure, say N.
+	  If unsure, say NN.
 
 
 config NXP_NFC_RECOVERY
@@ -30,5 +20,5 @@ config NXP_NFC_RECOVERY
 	help
 	  This enables NFC minimal FW update.
 
-	  If unsure, say N.
+	  If unsure, say NDN.
 
