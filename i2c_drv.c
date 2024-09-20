@@ -154,7 +154,7 @@ int i2c_read(struct nfc_dev *nfc_dev, char *buf, size_t count, int timeout)
 				ret = -EIO;
 				goto err;
 			}
-			pr_warn("%s: spurious interrupt detected\n", __func__);
+			//pr_warn("%s: spurious interrupt detected\n", __func__);
 		}
 	}
 
